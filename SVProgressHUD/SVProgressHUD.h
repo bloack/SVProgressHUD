@@ -48,7 +48,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @interface SVProgressHUD : UIView
 
 #pragma mark - Customization
-
+@property (nonatomic, assign) BOOL adjustKeyboardPosition; // default is NO
 @property (assign, nonatomic) SVProgressHUDStyle defaultStyle UI_APPEARANCE_SELECTOR;                   // default is SVProgressHUDStyleLight
 @property (assign, nonatomic) SVProgressHUDMaskType defaultMaskType UI_APPEARANCE_SELECTOR;             // default is SVProgressHUDMaskTypeNone
 @property (assign, nonatomic) SVProgressHUDAnimationType defaultAnimationType UI_APPEARANCE_SELECTOR;   // default is SVProgressHUDAnimationTypeFlat
@@ -94,7 +94,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setFadeInAnimationDuration:(NSTimeInterval)duration;        // default is 0.15 seconds
 + (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;       // default is 0.15 seconds
 + (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;      // default is UIWindowLevelNormal
-
++ (void)setAdjustKeyboardPosition:(BOOL)adjustKeyboardPosition;
 #pragma mark - Show Methods
 
 + (void)show;

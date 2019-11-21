@@ -639,6 +639,9 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
 #pragma mark - Notifications and their handling
 
 - (void)registerNotifications {
+    if (!self.adjustKeyboardPosition) {
+        return;
+    }
 #if TARGET_OS_IOS
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionHUD:)
@@ -1320,8 +1323,13 @@ static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15;
     }
     return _imageView;
 }
-
++ (void)setAdjustKeyboardPosition:(BOOL)adjustKeyboardPosition {
+    [[self sharedView] setAdjustKeyboardPosition:adjustKeyboardPosition];
+}
 - (CGFloat)visibleKeyboardHeight {
+    if (!self.adjustKeyboardPosition) {
+        return 0;
+    }
 #if !defined(SV_APP_EXTENSIONS)
     UIWindow *keyboardWindow = nil;
     for (UIWindow *testWindow in [[UIApplication sharedApplication] windows]) {
