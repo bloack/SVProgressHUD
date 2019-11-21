@@ -87,6 +87,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self sharedView].defaultStyle = style;
 }
 
++ (void)setAdjustKeyboardPosition:(BOOL)adjust {
+    [self sharedView].adjustKeyboardPosition = adjust;
+}
+
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType {
     [self sharedView].defaultMaskType = maskType;
 }
@@ -610,6 +614,9 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 #pragma mark - Notifications and their handling
 
 - (void)registerNotifications {
+    if (!self.adjustKeyboardPosition) {
+        return;
+    }
 #if TARGET_OS_IOS
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionHUD:)

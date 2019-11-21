@@ -43,6 +43,8 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 
 #pragma mark - Customization
 
+@property (nonatomic, assign) BOOL adjustKeyboardPosition;
+
 @property (assign, nonatomic) SVProgressHUDStyle defaultStyle UI_APPEARANCE_SELECTOR;                   // default is SVProgressHUDStyleLight
 @property (assign, nonatomic) SVProgressHUDMaskType defaultMaskType UI_APPEARANCE_SELECTOR;             // default is SVProgressHUDMaskTypeNone
 @property (assign, nonatomic) SVProgressHUDAnimationType defaultAnimationType UI_APPEARANCE_SELECTOR;   // default is SVProgressHUDAnimationTypeFlat
@@ -78,6 +80,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (assign, nonatomic) BOOL motionEffectEnabled; // default is YES
 
 + (void)setDefaultStyle:(SVProgressHUDStyle)style;                      // default is SVProgressHUDStyleLight
++ (void)setAdjustKeyboardPosition:(BOOL)adjust; // default is NO
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType;             // default is SVProgressHUDMaskTypeNone
 + (void)setDefaultAnimationType:(SVProgressHUDAnimationType)type;       // default is SVProgressHUDAnimationTypeFlat
 + (void)setContainerView:(nullable UIView*)containerView;               // default is window level
